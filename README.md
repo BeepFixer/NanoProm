@@ -3,7 +3,7 @@ Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro
 
 ## Overview & Features
 
-NanoProm is inspired by <a href="https://github.com/Ryzee119/ArduinoProm" target="_blank">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM" target="_blank">Grimdoomer’s PiPROM</a>.
+NanoProm is inspired by <a href="https://github.com/Ryzee119/ArduinoProm">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM">Grimdoomer’s PiPROM</a>.
 
 After two days of trying to breathe life into my CH340-based USB-C Nano clone (MEGA328PB), which stubbornly refused to cooperate, I purchased a Micro variant (MEGA32U4) and - bam - that worked perfectly using Ryzee119’s ArduinoProm.
 
