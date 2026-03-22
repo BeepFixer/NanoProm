@@ -1,7 +1,7 @@
-- NanoProm
+# NanoProm
 Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro
 
-- Overview & Features
+## Overview & Features
 
 NanoProm is inspired by <a href="https://github.com/Ryzee119/ArduinoProm" target="_blank">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM" target="_blank">Grimdoomer’s PiPROM</a>.
 
@@ -13,7 +13,7 @@ The result — after plenty of cursing — is <strong>NanoProm</strong>: a tiny 
 
 <img src="images/stubbornness.webp" alt="Stubbornness" width="400">
 
-- What NanoProm Can Do
+## What NanoProm Can Do
 
 * Read, write, and erase your <strong>Original Xbox onboard EEPROM</strong> without removing it.
 * Read, write, and erase a <strong>standalone EEPROM (24c02)</strong> via chip legs or an adapter.
@@ -24,4 +24,4 @@ The result — after plenty of cursing — is <strong>NanoProm</strong>: a tiny 
 
 > ⚠️ <strong>Warning:</strong> Use NanoProm at your own risk! It has some safety checks, but it cannot fix everything. Be careful not to short the Xbox or the board, and watch your hands!
 
-NanoProm won’t hold your hand, but it <em>will</em> get the job done. Small, cheap, and stubborn — just like me.
+
