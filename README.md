@@ -40,6 +40,18 @@ If you run into any issues, feel free to drop me a DM on Reddit or OGXbox - enjo
 
 ---
 
+## Requirements
+
+Before using NanoProm, make sure you have the following installed or available (see below for more info)
+
+- **Arduino IDE** – tested with version 2.3.8  
+- **Python 3.x** – tested with Python 3.14.0  
+- **Windows** – tested on Windows 11 Pro (24H2)  
+- **CH340 driver** – required for Nano clones (download from WCH: https://wch-ic.com/downloads/CH341SER_ZIP.html -> CH341SER.EXE)  
+- Optional: **SOIC8-to-DIP8 adapter** if using a standalone 24c02 EEPROM  
+
+---
+
 ## So.. What Can NanoProm Do?
 
 * Read, write, and erase your <strong>Original Xbox onboard EEPROM</strong> without removing it.
@@ -455,6 +467,18 @@ If the files differ even though they came from the same Xbox, you might want to 
 In this example screenshot, I am comparing `empty_00.bin` with `empty_ff.bin`, which obviously do not match (hence the result is all red).  
 
 Similar to the check after flashing the EEPROM, you can save the report here if you want to review it later. The report will also be saved to the `binfiles` directory unless you specify a different location.
+
+---
+
+## Known Limitations & Warnings
+
+- NanoProm is tested on **MEGA32U4 (Pro Micro)** and **MEGA328PB (CH340 Nano)** clones. Other variants may work but are untested.  
+- End-of-EEPROM data is often unused; minor mismatches may not affect Xbox functionality.  
+- Do **not** power on the Xbox without the USB cable connected, and do **not** connect the USB while the Xbox is powered on.  
+- Removing a 24c02 EEPROM is **not beginner-friendly**; practice on scrap electronics first.  
+- Minor serial timing issues may occur; always verify EEPROM after flashing.
+
+BeepFixer aka Tim is new to C++, Python & GitHub — I've tried my best to include as many checks as possible, but I know my limits. Feel very welcome to tinker with it; this is the best I could do! 🙂
 
 
 
