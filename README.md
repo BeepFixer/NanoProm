@@ -261,7 +261,7 @@ You will always be able to identify it easily, as the menu shows the exact same 
 
 The next time you run NanoProm, this might appear as port 7, or as menu option 1 or 2. It can change, so just select the correct one shown during your session. Even if the port differs from the one used in Arduino IDE, it does not matter - the board is already flashed. You only need to select the port currently used to communicate with it.
 
-## Remember to Power On
+## Remember to Power On (when using the Xbox method)
 
 The most common error you will run into is forgetting to power on your Xbox so the EEPROM receives the voltage needed to communicate. For example:
 
@@ -269,9 +269,26 @@ The most common error you will run into is forgetting to power on your Xbox so t
 
 You will most likely be using options 1 to 4. In that case, remove the DVD drive and hard disk, then power on the Xbox before performing any actions. The video cable does not need to be connected.
 
-Note: Do not keep the Xbox powered on for too long - only turn it on when needed for your actions. Also, turning it off requires holding the power button for a couple of seconds.
+**Note:** Do not keep the Xbox powered on for too long - only turn it on when needed for your actions. Also, turning it off requires holding the power button for a couple of seconds.
 
-Here's an example how I connect to the Xbox using pinheaders and 
+P.S. When wired directly to a 24C02 (or using a SOIC8-to-DIP8 adapter), this doesn’t apply - power comes from the red cable.
+
+## Read Example
+
+Since all actions are identical whether connected to the Xbox or only the 24c02 chip, all examples of reading, writing, erasing, and comparing apply to both.
+
+![Read Example](images/nanoprom-readexample.jpg)
+
+In this example, I selected the COM port in the red arrow section and read the EEPROM currently on my v1.0 mainboard. In this case, it is a random EEPROM backup from a v1.6 mainboard, which I previously flashed to my v1.0 testing Xbox.
+
+The blue arrow section shows that each time you read an EEPROM, the data is displayed on screen exactly as it is read from the chip.
+
+Next, you will be asked if you want to save the data as a file on your computer.
+
+Note: If you simply press Enter (rather than providing a name and or location manually), the file will be saved using a timestamp in the filename, for example "xbox_eeprom_2026-03-23_13-36-45.bin".
+
+If you do not specify a target directory, the file will be saved in the `binfiles` directory. However, in the green arrow section, you will always be able to see exactly where NanoProm saved the file on your computer.
+
 
 
 
