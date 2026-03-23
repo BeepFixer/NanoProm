@@ -236,6 +236,7 @@ The important thing to know is that NanoProm can be used for 2 types of connecti
 This is where you use the Orange (SCL), Blue (SDA), and Black (GND) wires.  
 The Red (3.3v/5v) is **NOT** used since the Xbox will power the EEPROM.  
 Remove the DVD and hard disk, then boot the Xbox before reading or writing to the EEPROM.
+The Xbox will be flashing Green/Orange in the front ring - if it doesn't, or if it shuts down after short attempts, your wiring might be wrong - check it and try again - it should be flashing Green/Orange and remain powered on constantly.
 
 > Menu options 1 to 4 are specifically for the Xbox variant
 
@@ -288,6 +289,39 @@ Next, you will be asked if you want to save the data as a file on your computer.
 Note: If you simply press Enter (rather than providing a name and or location manually), the file will be saved using a timestamp in the filename, for example "xbox_eeprom_2026-03-23_13-36-45.bin".
 
 If you do not specify a target directory, the file will be saved in the `binfiles` directory. However, in the green arrow section, you will always be able to see exactly where NanoProm saved the file on your computer.
+
+## Flashing / Writing a .bin File to EEPROM
+
+When using the write function of NanoProm, a small progress bar shows the flashing process. It goes without saying that you should **not** turn off the power to the Arduino board or the Xbox during this process. That said, unlike when flashing a computer BIOS, NanoProm will very likely still be able to re-flash the chip, since a fully operational Xbox is not required — only the power supply and power circuit on the mainboard are needed to execute a new flash.
+
+![Write Progress](images/nanoprom-write-progressbar.jpg)
+
+Once the write is complete, NanoProm will inform you whether it was able to write all 256 positions of the EEPROM.
+
+Next, it will ask if you want to verify the file against the flashed EEPROM to ensure they are identical. Hit `Y` and Enter to perform the check. Keep in mind that flashing and serial connections can experience timing issues, so it is **highly recommended to verify**.
+
+### Visual Comparison
+
+The data from the EEPROM (left) and the file you used (right) are displayed on-screen in colors:
+
+![Write Verify](images/nanoprom-write-verify.jpg)
+
+* Green: matches  
+* Red: differences found by NanoProm
+
+This picture above shows a 256/256 correct write, while the compare section (further down in this readme) displays a mix of red and green when I deliberately compare two different EEPROMs, illustrating both the color distribution and total number of errors.
+
+NanoProm reads the EEPROM during verification and compares each position, filling the screen with all 256 positions.  
+
+If it encounters an error, it will highlight the differences. While the end section of the EEPROM is not typically used by the Xbox, it is recommended to verify again if a mismatch occurs. If persistent, re-flash the EEPROM and check again.
+
+### Sidenote: Is NanoProm Flawless?
+
+No, it is not. I have gone to great lengths to test, simulate, and reduce problems. This includes carefully timed delays and other tricks to lower the probability of errors. Where errors do occur, NanoProm offers instant rechecks and verifications in the menu so you don’t have to second-guess whether a command was executed incorrectly.
+
+The end result is **higher reliability** than what I previously achieved using a traditional Windows 98 laptop with a 9-pin serial port, where reading and comparing hexadecimal values was done manually - which had been my workflow for almost 25 (!) years.
+
+That said, there is always room for improvement. I am sure someone with more experience in C++, Python, and serial interfaces could further enhance NanoProm. I strongly applaud anyone who wants to try.
 
 
 
