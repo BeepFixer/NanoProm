@@ -1,6 +1,14 @@
 # NanoProm v0.1 beta
 Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro / ..and likely more Arduino variants
 
+## Download NanoProm v0.1 Beta
+
+Get the ready-to-use ZIP of **NanoProm v0.1 Beta** here:
+
+[Download NanoProm v0.1 Beta](https://github.com/BeepFixer/NanoProm/releases/download/v0.1-beta/NanoProm.zip)
+
+Full instructions, screenshots, and safety notes are below — just scroll down!
+
 ![NanoProm Main](images/nanoprom_main.jpg)
 
 ## Overview & Features
