@@ -180,3 +180,46 @@ You'll need to wait a few seconds. You may hear the typical USB connect/disconne
 
 At this point, the firmware is successfully on your board. From here, we will use a Python script with a menu of options (explained in the next section) to read, write, or compare the EEPROM.
 
+---
+
+## NanoProm is Menu Driven and Uses Python
+
+NanoProm is controlled via a Python script that runs a menu, making interaction with the Arduino board simpler and more user-friendly. It also performs a few automatic checks along the way.
+
+Although it’s not a full Windows GUI with pop-up menus, usage is straightforward:
+- read the options on the screen
+- choose the corresponding number or letter
+- and hit Enter.
+
+![NanoProm Main](images/nanoprom_main.jpg)
+
+The interface is simple and lean, with helpful features such as:
+
+- COM port selection from available ports  
+- Error report saving (press Enter to auto-generate a timestamped filename)  
+- Visual red and green indicators when comparing binaries  
+- Built-in verification steps where possible  
+
+---
+
+## Installing Python
+
+To use NanoProm, you will need to install Python, which can be downloaded here: https://www.python.org/downloads/
+
+After installing Python:
+
+1. Open a Command Prompt (type `CMD` in the Windows search bar).  
+2. Install the required packages by typing:
+
+<code>pip install pyserial</code>
+
+<code>pip install wxPython</code>
+
+You can safely run these commands again if you’re unsure whether they were already installed - Python will simply let you know that the packages are already present.
+
+![Py Installed](images/pyinstalled.jpg)
+
+---
+
+After completing these steps, you can simply double-click the `NanoProm.py` file to start the main menu each time you want to use NanoProm.
+
