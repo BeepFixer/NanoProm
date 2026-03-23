@@ -1,6 +1,8 @@
 # NanoProm
 Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro
 
+![NanoProm Main](images/nanoprom_main.jpg)
+
 ## Overview & Features
 
 NanoProm is inspired by <a href="https://github.com/Ryzee119/ArduinoProm">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM">Grimdoomer’s PiPROM</a>.
@@ -104,7 +106,7 @@ If you do not see it listed, as shown in the image below:
 
 You will most likely need to install the CH340 driver for your Nano clone. 
 
-This can be downloaded from WCH's official English website: https://wch-ic.com/downloads/CH341SER_ZIP.html -> CH341SER.EXE
+This can be downloaded from WCH's official English website: https://wch-ic.com/downloads/CH341SER_ZIP.html -> **CH341SER.EXE**
 
 Once you’ve installed the driver, check Device Manager again - your board should now be recognized and assigned a COM port.
 
@@ -115,6 +117,66 @@ Once your board is recognized in Device Manager, you will need to install **Ardu
 Download the latest version from here: https://www.arduino.cc/en/software/ (I am currently using 2.3.8).
 
 1. Open `NanoProm.ino` in Arduino IDE
-2. [Next steps go here]
+2. Select the right board
+3. Select the right COM port
+4. Verify 
+5. Program
 
+## Selecting the Right Board
+
+First, make sure the correct board is selected from the Arduino IDE's list of available boards.  
+
+Example for the **Pro Micro** variant (MEGA32U4 / Leonardo):  
+![Pro Micro Board Selection](images/ide01promicro.jpg)
+
+Example for the **Nano** variant (MEGA328PB / CH340-Based):  
+![Nano Board Selection](images/ide02nano.jpg)
+
+---
+
+## Selecting the Right COM Port
+
+Next, make sure the correct COM port is assigned.  
+
+Check Windows Device Manager to see the assigned ports.  
+
+**Pro Micro (MEGA32U4 / Leonardo)**:  
+Device Manager view:  
+![Pro Micro Device Manager](images/ProMicro-device-manager.jpg)  
+
+COM port selection in Arduino IDE:  
+![Pro Micro COM Port](images/ide01bpromicro.jpg)
+
+**Nano (MEGA328PB / CH340-Based)**:  
+Device Manager view:  
+![Nano Device Manager](images/CH340-device-manager.jpg)  
+
+COM port selection in Arduino IDE:  
+![Nano COM Port](images/ide02bnano.jpg)
+
+---
+
+## Final Check in Arduino IDE
+
+Once you have assigned the correct board and COM port, the bottom right of the Arduino IDE window should show the selected board and port.  
+
+**Pro Micro (MEGA32U4 / Leonardo)**:  
+![Pro Micro Final Check](images/ide01cpromicro.jpg)
+
+**Nano (MEGA328PB / CH340-Based)**:  
+![Nano Final Check](images/ide02cnano.jpg)
+
+---
+
+## Program the Firmware
+
+Last but not least, hit the **Upload** button in Arduino IDE to write the firmware to your board. 
+
+![Upload](images/ide01dpromicro.jpg)
+
+You'll need to wait a few seconds. You may hear the typical USB connect/disconnect sounds, and once the upload finishes, you should see a message like this:
+
+![Upload Complete](images/ide-doneuploading.jpg)
+
+At this point, the firmware is successfully on your board. From here, we will use a Python script with a menu of options (explained in the next section) to read, write, or compare the EEPROM.
 
