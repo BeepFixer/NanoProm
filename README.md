@@ -66,7 +66,10 @@ The 24C02 EEPROM supports a supply voltage between **1.8V and 5.5V**.
 Depending on the board used, you can supply either 3.3V or 5V from the board.
 
 ## Wires
-I used pin headers on the Xbox, both boards, and the SOIC8 to DIP8 adapter, together with 10 cm female-to-female Dupont wires that connect to the male headers, as shown in the photos. 
+I used pin headers on the Xbox, both boards, and the SOIC8 to DIP8 adapter, together with 10 cm female-to-female Dupont wires that connect to the male headers, as shown in these photos.
+
+![Xbox_Example](images/IMG_20260323_121435.jpg)
+![24c02_Example](images/24c02adapterwired.JPG)
 
 However, the specific method is not critical - the connections themselves are what matter. 
 
@@ -229,18 +232,18 @@ The important thing to know is that NanoProm can be used for 2 types of connecti
 
 ![Connections Menu](images/NanoProm_connections_menu.jpg)
 
-1. Direct to Xbox  
+**1. Direct to Xbox**  
 This is where you use the Orange (SCL), Blue (SDA), and Black (GND) wires.  
-The Red (3.3v/5v) is NOT used since the Xbox will power the EEPROM.  
+The Red (3.3v/5v) is **NOT** used since the Xbox will power the EEPROM.  
 Remove the DVD and hard disk, then boot the Xbox before reading or writing to the EEPROM.
 
-* Menu options 1 to 4 are specifically for the Xbox variant
+> Menu options 1 to 4 are specifically for the Xbox variant
 
-2. Connected to Only an EEPROM Chip (24c02)  
+**2. Connected to Only an EEPROM Chip (24c02)**  
 The EEPROM is pretty sturdy, but there are occasions where you might need to read and write directly to a 24c02 chip. This could be because the original chip has failed and needs replacing, or because the mainboard or power supply has died and you just want to read the EEPROM.  
 In this case, use the Orange (SCL), Blue (SDA), Black (GND), and Red (3.3v/5v) wires.
 
-* Menu options 6 to 9 are specifically for the solo 24c02 variant
+> Menu options 6 to 9 are specifically for the solo 24c02 variant
 
 In both cases, the actions are identical. The only difference is that a standalone 24c02 uses address (0x50), while inside the Xbox it uses address (0x54).
 
@@ -268,7 +271,7 @@ You will most likely be using options 1 to 4. In that case, remove the DVD drive
 
 Note: Do not keep the Xbox powered on for too long - only turn it on when needed for your actions. Also, turning it off requires holding the power button for a couple of seconds.
 
+Here's an example how I connect to the Xbox using pinheaders and 
 
-testest
 
 
