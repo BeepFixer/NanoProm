@@ -219,7 +219,54 @@ You can safely run these commands again if you’re unsure whether they were alr
 
 ![Py Installed](images/pyinstalled.jpg)
 
+After completing these steps, you can simply double-click the `NanoProm.py` file to start the main menu each time you want to use NanoProm.
+
 ---
 
-After completing these steps, you can simply double-click the `NanoProm.py` file to start the main menu each time you want to use NanoProm.
+## A Quick Look Into the Menu
+
+The important thing to know is that NanoProm can be used for 2 types of connections.
+
+![Connections Menu](images/NanoProm_connections_menu.jpg)
+
+1. Direct to Xbox  
+This is where you use the Orange (SCL), Blue (SDA), and Black (GND) wires.  
+The Red (3.3v/5v) is NOT used since the Xbox will power the EEPROM.  
+Remove the DVD and hard disk, then boot the Xbox before reading or writing to the EEPROM.
+
+* Menu options 1 to 4 are specifically for the Xbox variant
+
+2. Connected to Only an EEPROM Chip (24c02)  
+The EEPROM is pretty sturdy, but there are occasions where you might need to read and write directly to a 24c02 chip. This could be because the original chip has failed and needs replacing, or because the mainboard or power supply has died and you just want to read the EEPROM.  
+In this case, use the Orange (SCL), Blue (SDA), Black (GND), and Red (3.3v/5v) wires.
+
+* Menu options 6 to 9 are specifically for the solo 24c02 variant
+
+In both cases, the actions are identical. The only difference is that a standalone 24c02 uses address (0x50), while inside the Xbox it uses address (0x54).
+
+For anyone looking into the code, you will notice the two paths are fairly separate. This is because, while trying to optimize the code, I ran into limitations with my experience in C++, Python, and serial timing. After several failed attempts at merging things cleanly, I chose to keep separate read/write paths. As a user, you will not notice any difference - this is just mentioned in case someone wants to tinker with the code.
+
+## Menu Driver COM Port Selection
+
+Rather than having to type the port in command prompts, NanoProm simply asks you which port to use for each action, whether it is reading, writing, erasing, or comparing.
+
+![COM Port Selection](images/nanoprom-portselect.jpg)
+
+It displays a list of available COM ports, which may differ per computer. For example, my laptop always shows ports 4 and 6, even with or without a board attached. The port your board appears on may also change depending on which USB port you use.
+
+You will always be able to identify it easily, as the menu shows the exact same name as Windows Device Manager. In the screenshot above, you would type `0` and press Enter to select the board on port 8.
+
+The next time you run NanoProm, this might appear as port 7, or as menu option 1 or 2. It can change, so just select the correct one shown during your session. Even if the port differs from the one used in Arduino IDE, it does not matter - the board is already flashed. You only need to select the port currently used to communicate with it.
+
+## Remember to Power On
+
+The most common error you will run into is forgetting to power on your Xbox so the EEPROM receives the voltage needed to communicate. For example:
+
+![Not Powered](images/nanoprom-notpowered.jpg)
+
+You will most likely be using options 1 to 4. In that case, remove the DVD drive and hard disk, then power on the Xbox before performing any actions. The video cable does not need to be connected.
+
+Note: Do not keep the Xbox powered on for too long - only turn it on when needed for your actions. Also, turning it off requires holding the power button for a couple of seconds.
+
+
 
