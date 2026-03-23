@@ -1,0 +1,3 @@
+For more info see:
+
+https://github.com/BeepFixer/NanoProm/
