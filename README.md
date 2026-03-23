@@ -7,7 +7,7 @@ Get the ready-to-use ZIP of **NanoProm v0.1 Beta** here:
 
 [Download NanoProm v0.1 Beta](https://github.com/BeepFixer/NanoProm/releases/download/v0.1-beta/NanoProm.zip)
 
-Full instructions, screenshots, and safety notes are below — just scroll down!
+Full instructions, screenshots, and safety notes are below - just scroll down!
 
 ![NanoProm Main](images/nanoprom_main.jpg)
 
@@ -380,7 +380,7 @@ If you do not specify a target directory, the file will be saved in the `binfile
 
 ## Flashing / Writing a .bin File to EEPROM
 
-When using the write function of NanoProm, a small progress bar shows the flashing process. It goes without saying that you should **not** turn off the power to the Arduino board or the Xbox during this process. That said, unlike when flashing a computer BIOS, NanoProm will very likely still be able to re-flash the chip, since a fully operational Xbox is not required — only the power supply and power circuit on the mainboard are needed to execute a new flash.
+When using the write function of NanoProm, a small progress bar shows the flashing process. It goes without saying that you should **not** turn off the power to the Arduino board or the Xbox during this process. That said, unlike when flashing a computer BIOS, NanoProm will very likely still be able to re-flash the chip, since a fully operational Xbox is not required - only the power supply and power circuit on the mainboard are needed to execute a new flash.
 
 ![Write Progress](images/nanoprom-write-progressbar.jpg)
 
@@ -478,7 +478,7 @@ Similar to the check after flashing the EEPROM, you can save the report here if 
 - Removing a 24c02 EEPROM is **not beginner-friendly**; practice on scrap electronics first.  
 - Minor serial timing issues may occur; always verify EEPROM after flashing.
 
-BeepFixer aka Tim is new to C++, Python & GitHub — I've tried my best to include as many checks as possible, but I know my limits. Feel very welcome to tinker with it; this is the best I could do! 🙂
+BeepFixer aka Tim is new to C++, Python & GitHub - I've tried my best to include as many checks as possible, but I know my limits. Feel very welcome to tinker with it; this is the best I could do! 🙂
 
 
 
