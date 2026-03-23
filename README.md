@@ -338,6 +338,8 @@ You will most likely be using options 1 to 4. In that case, remove the DVD drive
 
 **Note:** Do not keep the Xbox powered on for too long - only turn it on when needed for your actions. Also, turning it off requires holding the power button for a couple of seconds.
 
+**Note 2:** Do not forget to have your USB cable from the computer to the Arduino connected, as well as the wires from the Arduino to the Xbox, before you turn on the Xbox. Powering on the Xbox without the USB connected (while the Arduino is connected) may cause booting problems. Also, do not connect the USB cable to your computer while the Xbox is powered on - always power down the Xbox first.
+
 P.S. When wired directly to a 24C02 (or using a SOIC8-to-DIP8 adapter), this doesn’t apply - power comes from the red cable.
 
 ## Read Example
@@ -400,6 +402,27 @@ As shown above, the red arrow points to a progress bar that displays the erasing
 ![Erase Progress 2](images/nanoprom_erase2.jpg)  
 
 After this step, the screen will show a new read of your EEPROM and confirm whether the data has been fully flushed with all `FF` (or `00` if you chose that option).
+
+## Comparing EEPROM to a .bin File
+
+In the example below, I am verifying the file `eeprom16.bin` against the current EEPROM (which I have erased with all `FF`s). As expected, the result on screen shows that they do not match.
+
+![EEPROM Verify](images/nanoprom-verify.jpg)
+
+In this case, NanoProm reports 250 of 256 incorrect checks, which is immediately visible on screen as soon as it finds one or more errors.  
+
+Green indicates parts that are identical on both the EEPROM and the file, while red indicates differences.  
+
+Here, my test file `eeprom16.bin` only contains six occurrences of `FF` in total, and you can visually see them on both the EEPROM and the `.bin` file.  
+
+This example is deliberately extreme, showing mostly red, but in other cases you may find the comparison useful, as it is also automatically run after flashing an EEPROM.  
+
+* Zero red is good news  
+* In worst-case scenarios, an Xbox may still work with red near the end of the EEPROM  
+* You might want to verify which of your `eeprom.bin` backup files matches (or does not match) the one on your Xbox  
+* It may indicate a problem with the 24c02 chip if the same positions repeatedly show red  
+
+I have also included an option to save a report containing all memory locations and differences to a `.txt` file (saved in the `binfiles` folder by default). In this example, I named it `mismatch.txt`, and NanoProm will show you exactly where it saved the file.
 
 
 
