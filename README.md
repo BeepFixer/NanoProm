@@ -1,21 +1,36 @@
-# NanoProm
-Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro
+# NanoProm v0.1 beta
+Original Xbox and standalone EEPROM flasher for Arduino Nano / Pro Micro / ..and likely more Arduino variants
 
 ![NanoProm Main](images/nanoprom_main.jpg)
 
 ## Overview & Features
 
-NanoProm is inspired by <a href="https://github.com/Ryzee119/ArduinoProm">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM">Grimdoomer’s PiPROM</a>.
+NanoProm is heavily inspired by <a href="https://github.com/Ryzee119/ArduinoProm">Ryzee119’s ArduinoProm</a>, which in turn owes its roots to <a href="https://github.com/grimdoomer/PiPROM">Grimdoomer’s PiPROM</a>.
 
 After two days of trying to breathe life into my CH340-based USB-C Nano clone (MEGA328PB), which stubbornly refused to cooperate, I purchased a Micro variant (MEGA32U4) and - bam - that worked perfectly using Ryzee119’s ArduinoProm.
 
-That could have been the end of it, since I just needed something to replace my last trusty Windows 98 laptop with a dying serial port - but stubbornness is my middle name. I figured, why not make a fun project to see if a bit of AI magic could help me learn C++ and Python enough to understand what’s going on? Maybe then I could even tinker the Nano to work after all.
+That could have been the end of it, since I just needed something to replace my last dying Windows 98 laptop with a serial port - but stubbornness is my middle name. I figured, why not make a fun project to see if a bit of AI magic could help me learn C++ and Python enough to understand what’s going on? Maybe then I could even tinker the Nano to work after all.
 
-The result - after plenty of cursing - is <strong>NanoProm</strong>: a tiny little bit of code I hope you all can use, if only because it was made with a healthy, huge dose of <strong>“NO WE WON’T” attitude</strong>.
+The result - after plenty of crying and cursing - is **NanoProm v0.1 beta**!
+
+NanoProm works on the same principles as its predecessors but presents the functionality in a **menu style** and includes a few tricks that I hope will simplify life for Xbox enthusiasts and **reduce the confusion** around using text prompts, especially for new generations who did not grow up with prompts as the norm.  
 
 <img src="images/stubbornness.webp" alt="Stubbornness" width="400">
 
-## What NanoProm Can Do
+I truly hope this reaches Xbox fans who appreciate the healthy, huge dose of **“NO WE WON’T” stubbornness** I put into it - grin - and at the end of the day, just learning a bit of C++ and Python in the process made the time spent worthwhile. If NanoProm ends up rescuing even a single Xbox from the scrapheap, that is already a big bonus in my eyes.  
+
+Below you'll find detailed information on how to connect and use NanoProm. I’ve included as much detail and screenshots as possible, so the amount of time needed to explain this on awesome user-friendly sites like [Reddit /r/originalxbox](https://www.reddit.com/r/originalxbox/) or [OGXbox Forums](https://www.ogxbox.com/forums/) is minimized.
+
+**In closing**
+I have been tinkering with Xbox hardware for nearly 25 years, worked on thousands of units, and this is finally my first hardware/software contribution to the Xbox scene.  
+
+If you're reading this - please take a second to appreciate how incredibly friendly and helpful Xbox sceners are to others and newcomers - I have met a huge number of amazing people, directly and indirectly involved in the Xbox scene, both in person and online -and- I am truly proud to be part of it!
+
+If you run into any issues, feel free to drop me a DM on Reddit or OGXbox - enjoy!
+
+**Tim** aka **BeepFixer**
+
+## So.. What Can NanoProm Do?
 
 * Read, write, and erase your <strong>Original Xbox onboard EEPROM</strong> without removing it.
 * Read, write, and erase a <strong>standalone EEPROM (24c02)</strong> via chip legs or an adapter.
@@ -24,13 +39,20 @@ The result - after plenty of cursing - is <strong>NanoProm</strong>: a tiny litt
 * Compare <code>.bin</code> files against the chip or other <code>.bin</code> files.
 * Erase the EEPROM with <code>00</code> or <code>FF</code>.
 
-> ⚠️ <strong>Warning:</strong> Use NanoProm at your own risk! It has some safety checks, but it cannot fix everything. Be careful not to short the Xbox or the board, and watch your hands!
+> ⚠️ <strong>Warning:</strong> Use NanoProm at your own risk!
+>
+> It has some safety checks, but it cannot fix everything. Be careful not to short the Xbox or the board, and watch your hands!
 
 # Wiring Guide
 
 Below are the pinout diagrams used in this setup. 
 
 All diagrams are colour-coded in each picture, to help you match the correct pin connections between components.
+
+* Orange (SCL)
+* Blue (SDA)
+* Black (GND)
+* Red (3.3v/5v) <- only used when connection a 24c02 outside of the Xbox
 
 ![Xbox LPC Pinout](images/Xbox_LPC-pinout.jpg)
 ![Arduino Nano Pinout](images/nano-pinout.jpg)
