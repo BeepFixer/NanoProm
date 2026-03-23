@@ -79,7 +79,13 @@ The 3.3V wire must be connected when working with the EEPROM outside of the Xbox
 - Directly wiring to a 24C02 chip  
 - Using a SOIC8-to-DIP8 adapter  
 
-In these cases, the EEPROM must be powered by the board.
+![removed_new24c02](images/24c02_removed.JPG)
+
+Where possible, always perform actions on the EEPROM while it is attached to the Xbox mainboard. However, if you have no choice and must remove it, take care when removing or replacing it.
+
+While I encourage people new to soldering to learn tasks such as capacitor removal or even TSOP modding, I would not consider replacing the 24c02 a beginner-level job. If you must attempt it, please practice first on scrap electronics using a chip of similar size.
+
+Keep in mind the 24c02 removed from the Xbox mainboard needs to receive the 3.3v/5v connection from your Arduino (red), and you use menu options 6 to 9 in NanoProm.
 
 ## Voltage Notes
 
