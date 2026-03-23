@@ -389,6 +389,19 @@ The end result is **higher reliability** than what I previously achieved using a
 
 That said, there is always room for improvement. I am sure someone with more experience in C++, Python, and serial interfaces could further enhance NanoProm. I strongly applaud anyone who wants to try.
 
+## Erasing
+
+In the Erase option, you can choose to fill the EEPROM entirely with `00` or `FF` - both will work. However, in dozens of tests I noticed that `FF` caused no issues, while `00` occasionally ran into timing problems. As a rule of thumb, I personally use `FF`.  
+
+![Erase Progress 1](images/nanoprom_erase1.jpg)  
+
+As shown above, the red arrow points to a progress bar that displays the erasing of data on your EEPROM. The green arrow points to a small time delay I built in, which counts down 3, 2, 1 before continuing. This delay cured most of the timing issues I experienced during testing.  
+
+![Erase Progress 2](images/nanoprom_erase2.jpg)  
+
+After this step, the screen will show a new read of your EEPROM and confirm whether the data has been fully flushed with all `FF` (or `00` if you chose that option).
+
+
 
 
 
