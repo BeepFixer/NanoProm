@@ -9,7 +9,7 @@ NanoProm is heavily inspired by <a href="https://github.com/Ryzee119/ArduinoProm
 
 After two days of trying to breathe life into my CH340-based USB-C Nano clone (MEGA328PB), which stubbornly refused to cooperate, I purchased a Micro variant (MEGA32U4) and - bam - that worked perfectly using Ryzee119’s ArduinoProm.
 
-That could have been the end of it, since I just needed something to replace my last dying Windows 98 laptop with a serial port - but stubbornness is my middle name. I figured, why not make a fun project to see if a bit of AI magic could help me learn C++ and Python enough to understand what’s going on? Maybe then I could even tinker the Nano to work after all.
+That could have been the end of it, since I just needed something to replace my last dying Windows 98 laptop with a serial port - but with so much time lost and stubbornness being my middle name.. I figured, why not make a fun project to see if a bit of AI magic could help me learn C++ and Python enough to understand what’s going on? Maybe then I could even tinker the Nano to work after all.
 
 The result - after plenty of crying and cursing - is **NanoProm v0.1 beta**!
 
@@ -29,6 +29,8 @@ If you're reading this - please take a second to appreciate how incredibly frien
 If you run into any issues, feel free to drop me a DM on Reddit or OGXbox - enjoy!
 
 **Tim** aka **BeepFixer**
+
+---
 
 ## So.. What Can NanoProm Do?
 
@@ -66,22 +68,28 @@ All diagrams are colour-coded in each picture, to help you match the correct pin
 
 Do **NOT** connect the **RED WIRE** when wiring directly to the Xbox!
 
-The red wire (3.3V) is only required when powering the EEPROM externally, and should be left disconnected when using the Xbox as the power source!
+The red wire (3.3V/5V) is only required when powering the EEPROM externally, and should be left disconnected when using the Xbox as the power source!
 
 Likewise, ensure that neither the Arduino board nor its pins (depending on the type used) come into contact with the Xbox mainboard surface or casing (GND), as this may cause a short circuit to the Xbox or the board!
+
+If you are eager to get started but are not used to working on open electronics, or simply want an extra layer of safety, consider using wide electrical tape to cover the Nano and its connections so they cannot come into contact with any components on the Xbox mainboard.
 
 ---
 
 ## External EEPROM Connections
 
-The 3.3V wire must be connected when working with the EEPROM outside of the Xbox, for example:
+The Red wire (3.3V/5V) must be connected when working with the EEPROM outside of the Xbox, for example:
 
 - Directly wiring to a 24C02 chip  
 - Using a SOIC8-to-DIP8 adapter  
 
+Where possible, always perform actions on the EEPROM while it is attached to the Xbox mainboard!
+
+However, if you have NO other choice and must remove it, take care when removing or replacing a 24c02.
+
 ![removed_new24c02](images/24c02_removed.JPG)
 
-Where possible, always perform actions on the EEPROM while it is attached to the Xbox mainboard. However, if you have no choice and must remove it, take care when removing or replacing it.
+Do NOT (!) pull on the chip while heating its solder connections - it should lift off smoothly. Pulling the chip while any of its 8 legs are still attached can damage or lift/snap traces on the mainboard. While this can be repaired with the right tools, it is not a beginner-level job, so please be careful.
 
 While I encourage people new to soldering to learn tasks such as capacitor removal or even TSOP modding, I would not consider replacing the 24c02 a beginner-level job. If you must attempt it, please practice first on scrap electronics using a chip of similar size.
 
@@ -94,42 +102,56 @@ The 24C02 EEPROM supports a supply voltage between **1.8V and 5.5V**.
 Depending on the board used, you can supply either 3.3V or 5V from the board.
 
 ## Wires
-I used pin headers on the Xbox, both boards, and the SOIC8 to DIP8 adapter, together with 10 cm female-to-female Dupont wires that connect to the male headers, as shown in these photos.
+I use pin headers on the Xbox, both boards, and the SOIC8 to DIP8 adapter, together with 10 cm female-to-female Dupont wires that connect to the male headers, as shown in these photos.
 
 ![Xbox_Example](images/IMG_20260323_121435.jpg)
 ![24c02_Example](images/24c02adapterwired.JPG)
 
-However, the specific method is not critical - the connections themselves are what matter. 
+However, this specific method of using pinheaders and dupont cables is not critical - the connections themselves are what matter. 
 
-You can also solder wires directly from the board to the LPC if preferred.
+You can also solder wires directly from your Arduino board directly to the LPC if preferred.
 
-Keep the wires relatively short, as longer wires increase the chance of connection issues or failure.
+Just make sure to keep the wires relatively short, as longer wires increase the chance of connection issues or failure.
 
 ---
 
 # Arduino Setup
 
-Firstly, NanoProm's firmware was written because I could not get my Nano clone to work with ArduinoProm. This is my first attempt at both C++ and Python, so the whole thing is essentially the result of a lot of trial and error, plenty of help from ChatGPT, and a lot of testing and re-testing.
+Firstly, I want to emphasize that I started writing NanoProm's firmware because I was completely stuck trying to get my Nano clone to work with Ryzee119’s ArduinoProm.  
 
-In the end, it very much falls into the category of "it works on my computer" and "it works with the specific clone I have in my hand".
+NanoProm is essentially the result of me:  
+* Initially not fully understanding Arduino IDE  
+* Being stuck with a CH340 clone board  
+* A lot of trial and error  
+* Being stubborn  
 
-I was actually expecting to fall back to ArduinoProm for the Pro Micro, but NanoProm ended up working very nicely on both boards, which hopefully means it will also work with whatever Arduino clone you are using.
+I also want to emphasize that I greatly appreciate what Ryzee119 created! If I had not started with a clone board, I likely would never have gone down the route of building something myself.  
+
+Also, this is literally my first attempt at both C++ and Python, and - yes - I needed plenty of help from ChatGPT, along with a lot of testing and re-testing to get it working (not to mention, as usual, fixing the dozens of mistakes ChatGPT inevitably makes). By that point, I started adding small helper features and quality-of-life improvements, which eventually evolved into the menu-driven approach and now NanoProm.
+
+In the end, it very much falls into the category of "it works on my computer" and "it works with the specific two clones I have in my hand".
+
+I was actually expecting to fall back to ArduinoProm for the Pro Micro, but NanoProm ended up working very nicely on both boards, which hopefully means it will also work with whatever Arduino (clone) you are using.
 
 For reference, **the Nano** I used was sold as:
-"Nano 3.0 Mini Type-C USB With the bootloader compatible Nano controller for Arduino CH340 USB driver 16MHz ATMEGA328PB"
+_"Nano 3.0 Mini Type-C USB With the bootloader compatible Nano controller for Arduino CH340 USB driver 16MHz ATMEGA328PB"_
 
 The **Pro Micro** I used was sold as:
-"Pro Micro ATmega32U4 5V 16MHz Replace ATmega328 For Arduino TYPE-C With 2 Row Pin Header for Leonardo Mini USB Interface Pro"
+_"Pro Micro ATmega32U4 5V 16MHz Replace ATmega328 For Arduino TYPE-C With 2 Row Pin Header for Leonardo Mini USB Interface Pro"_
 
-I am not linking to specific AliExpress listings, as these tend to appear and disappear frequently. The descriptions above are provided so you know what was tested.
+I am not linking to specific AliExpress listings, as Arduino clone listings on AliExpress or eBay tend to appear and disappear frequently. The descriptions above are provided so you know exactly what was tested, but even if I were to purchase the same item again, there is a high chance of receiving a different variant.
+
+One identifier you can use is the Atmel chip on the board, such as the Pro Micro variant (MEGA32U4 / Leonardo) or the Nano variant (MEGA328PB / CH340-based). However, this is still hit and miss, as product photos often do not match what you actually receive.
+
+The good news is that you can likely just go for the cheapest option - in my case both were under 2 euro, so you will not break the bank being stubborn haha.
 
 ---
 
-## Software Setup: CH340 Driver
+## Software Setup: CH340 Driver (Nano specific)
 
 Check your computer's Device Manager and see if your Nano clone appears correctly under "Ports (COM & LPT)". 
 
-In many cases, it will not show up properly by default, and you will need to install the appropriate drivers.
+In many cases, it will not show up properly by default, and you will need to install the appropriate drivers!
 
 If you do not see it listed, as shown in the image below:
 
@@ -143,9 +165,23 @@ Once you’ve installed the driver, check Device Manager again - your board shou
 
 ## Software Setup: Arduino IDE
 
+**Important:** Any `.ino` file, including `NanoProm.ino`, must be in a folder of the same name because the Arduino IDE treats the folder as the project container (sketch) rather than just the file itself.  
+
+That’s why the structure of NanoProm is organized as follows:
+
+* `NanoProm` (folder)  
+  * `NanoProm.ino` (file)  
+  * `binfiles` (folder where EEPROM data and reports are saved/loaded)  
+  * `python` (folder containing `NanoProm.py` to start the tool)
+
+While semi on the topic also note that in NanoProm you can use the prompt to save or load files in any location on your computer, for example `C:\eeprom.bin`. Just keep in mind that the tool’s default folder is `binfiles`, so if you want to load or write elsewhere, you will need to provide the full path. Always double-check the path to avoid overwriting important files.
+
+**Back to setting up Arduino IDE:**
+
 Once your board is recognized in Device Manager, you will need to install **Arduino IDE** to compile and upload the firmware to your board.
 
 Download the latest version from here: https://www.arduino.cc/en/software/ (I am currently using 2.3.8).
+
 
 1. Open `NanoProm.ino` in Arduino IDE
 2. Select the right board
@@ -169,7 +205,9 @@ Example for the **Nano** variant (MEGA328PB / CH340-Based):
 
 Next, make sure the correct COM port is assigned.  
 
-Check Windows Device Manager to see the assigned ports.  
+Check Windows Device Manager to see the assigned ports. 
+
+Please note that the COM port can change in Windows depending on which USB port you use. In NanoProm, the available ports are listed for you, but when setting up the Arduino IDE, make sure to check Windows Device Manager, as shown in the two examples below.
 
 **Pro Micro (MEGA32U4 / Leonardo)**:  
 Device Manager view:  
