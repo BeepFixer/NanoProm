@@ -424,6 +424,30 @@ This example is deliberately extreme, showing mostly red, but in other cases you
 
 I have also included an option to save a report containing all memory locations and differences to a `.txt` file (saved in the `binfiles` folder by default). In this example, I named it `mismatch.txt`, and NanoProm will show you exactly where it saved the file.
 
+## Comparing Two .bin Files on PC
+
+Option 5 in the menu is the only option that does not require an Arduino connection. It simply compares two `.bin` EEPROM files on your computer against each other.  
+
+While testing, I realized that I often find various `eeprom.bin` or other similarly named files on hard disks from new Xbox units that arrive in my workshop.  
+
+Since it’s good practice to make a backup of a hard disk before working on a machine, this means I often have quite a few EEPROM files, sometimes even several from the same Xbox. So...
+
+For example, you can use this feature to:  
+
+* Compare multiple `.bin` file saves from the same Xbox  
+* Check if you saved an EEPROM file last night before grabbing some sleep  
+* Verify whether two `.bin` files with the same name are identical  
+
+If the files differ even though they came from the same Xbox, you might want to read them out using one of the programs suited for reading Xbox EEPROMs. It would not be the first time I found an HDD unlock code that way from a hard disk in a bundle of Xbox stuff.  
+
+**TIP:** You can copy the files into the `binfiles` folder, which is the default read location. If both files are called `eeprom.bin`, simply rename them to, for example, `eeprom1.bin` and `eeprom2.bin`.  
+
+![File-to-File Compare](images/nanoprom-filefilecompare.jpg)  
+
+In this example screenshot, I am comparing `empty_00.bin` with `empty_ff.bin`, which obviously do not match (hence the result is all red).  
+
+Similar to the check after flashing the EEPROM, you can save the report here if you want to review it later. The report will also be saved to the `binfiles` directory unless you specify a different location.
+
 
 
 
